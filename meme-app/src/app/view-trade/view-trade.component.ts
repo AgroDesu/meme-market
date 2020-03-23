@@ -47,4 +47,12 @@ export class ViewTradeComponent implements OnInit {
     this.location.back();
   }
 
+  rejectTrade(){
+
+  }
+
+  acceptTrade(){
+    
+  }
+
 }
