@@ -8,9 +8,9 @@
             <td></td>
         </tr>
     </thead>
-    <tr *ngFor="let t of trades">
-        <td>{{getOtherUsername(t)}}</td>
-        <td>{{t.tradeStatus.statusName}}</td>
-        <td><button class="btn btn-primary" (click)="tradeService.viewTrade(t)">View</button></td>
+    <tr *ngFor="let t of fullTrades">
+        <td>{{t.otherUser.username}}</td>
+        <td>{{t.trade.tradeStatus.statusName}}</td>
+        <td><button class="btn btn-primary" (click)="tradeService.viewTrade(t.trade)">View</button></td>
     </tr>
 </table>
