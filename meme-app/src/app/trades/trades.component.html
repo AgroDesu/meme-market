@@ -9,8 +9,8 @@
         </tr>
     </thead>
     <tr *ngFor="let ft of fullTrades">
-        <td>{{t.otherUser.username}}</td>
-        <td>{{t.trade.tradeStatus.statusName}}</td>
+        <td>{{ft.otherUser.username}}</td>
+        <td>{{ft.trade.tradeStatus.statusName}}</td>
         <td><button class="btn btn-primary" (click)="tradeService.viewTrade(ft)">View</button></td>
     </tr>
 </table>
