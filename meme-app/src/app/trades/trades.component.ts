@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trade } from '../trade';
 import { TradeService } from '../services/trade.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-trades',
@@ -11,7 +12,8 @@ export class TradesComponent implements OnInit {
   public trades: Trade[];
 
   constructor(
-    public tradeService: TradeService
+    public tradeService: TradeService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,20 @@ export class TradesComponent implements OnInit {
         console.log(this.trades);
       }
     )
+  }
+
+  getOtherUsername(t): string {
+    let user = this.userService.getUser();
+    if(user.patron.id == t.patronOne.id) {
+      this.userService.getUserByPatronId(t.patronTwo.id).subscribe(resp => {
+        user = resp;
+      })
+    } else {
+      this.userService.getUserByPatronId(t.patronOne.id).subscribe(resp => {
+        user = resp;
+      })
+    }
+    return user.username;
   }
 
 }

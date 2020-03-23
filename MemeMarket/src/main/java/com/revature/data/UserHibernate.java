@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.User;
@@ -17,6 +18,8 @@ import com.revature.utils.LogUtil;
 @Component
 public class UserHibernate implements UserDao {
 	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private PatronDao pd;
 	
 	@Override
 	public int addUser(User u) {
@@ -81,6 +84,17 @@ public class UserHibernate implements UserDao {
 		}
 		s.close();
 		return ret;
+	}
+	
+	@Override
+	public User getUserByPatron(Integer id) {
+		Session s = hu.getSession();
+		String query = "from User where patron=:patron";
+		Query<User> q = s.createQuery(query, User.class);
+		q.setParameter("patron", pd.getPatron(id));
+		User u = q.uniqueResult();
+		s.close();
+		return u;
 	}
 	
 	@Override

@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tr *ngFor="let t of trades">
-        <td></td>
+        <td>{{getOtherUsername(t)}}</td>
         <td>{{t.tradeStatus.statusName}}</td>
         <td><button class="btn btn-primary">View</button></td>
     </tr>

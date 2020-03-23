@@ -24,6 +24,17 @@ export class UserService {
     private router: Router
   ) { }
 
+  getUserByPatronId(id: number): Observable<User>{
+    return this.http.get(this.appUrl + 'patron/' + id,
+      {headers: this.headers, withCredentials: true})
+      .pipe(
+        map(resp => {
+          const user: User = resp as User;
+          return user;
+        })
+      )
+  }
+
   getUserById(id: number): Observable<User>{
     return this.http.get(this.appUrl + '/' + id,
       {headers: this.headers, withCredentials: true})
