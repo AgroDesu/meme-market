@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Trade } from '../trade';
 import { TradeService } from '../services/trade.service';
 import { UserService } from '../services/user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-trades',
@@ -25,18 +26,19 @@ export class TradesComponent implements OnInit {
     )
   }
 
-  getOtherUsername(t): string {
+  getOtherUsername(t: Trade): string {
     let user = this.userService.getUser();
+    let otherUser = new User;
     if(user.patron.id == t.patronOne.id) {
       this.userService.getUserByPatronId(t.patronTwo.id).subscribe(resp => {
-        user = resp;
+        otherUser = resp;
       })
     } else {
       this.userService.getUserByPatronId(t.patronOne.id).subscribe(resp => {
-        user = resp;
+        otherUser = resp;
       })
     }
-    return user.username;
+    return otherUser.username;
   }
 
 }
