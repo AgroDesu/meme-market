@@ -3,3 +3,17 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+#otherUsersCardDiv {
+    text-align: left;
+}
+
+#loggedUsersCardDiv {
+    text-align: left;
+}
+
+#submit-trade-button {
+    text-align: center;
+}
+#goBackbutton{
+    text-align: left;
+}

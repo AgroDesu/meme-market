@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { User } from '../user';
 import { TradeService } from '../services/trade.service';
 import { OwnedCard } from '../owned-card';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trade-select-cards',
@@ -50,7 +51,10 @@ export class TradeSelectCardsComponent implements OnInit {
 
   submitTradeOffer(){
     if(this.cardsToBeTraded.length === 0){
-      alert('No cards have been selected.')
+      Swal.fire({
+        icon: 'error',
+        text: 'No cards selected!',
+      })
     }else{
       this.ts.submitTrade(this.cardsToBeTraded);
       this.goBack();

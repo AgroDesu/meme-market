@@ -185,3 +185,12 @@ h2 {
     border-width: 9px;
     transform: rotate(-6deg);
 }
+
+.rarity-index{
+    text-align: start;
+    font-family: Avant-Garde;
+}
+
+#rarity-index-text{
+    text-align: center;
+}

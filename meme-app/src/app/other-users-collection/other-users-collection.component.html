@@ -1,5 +1,7 @@
 <h2>{{otherUser.username}}'s Collection</h2>
+<div id="trade-button">
 <button (click)="ts.setTradeUsers(loggedUser, otherUser)" class="btn btn-secondary" routerLink="/trade-select-cards">Make Trade Offer</button>
+</div>
 <div id="collection">
     <div *ngFor="let oc of otherUser.patron.ownedCards">
         <img src="{{oc.card.image}}" class="memeImage {{oc.card.rarity.name}}" routerLink="/card-details/{{oc.card.id}}">

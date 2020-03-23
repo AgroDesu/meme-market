@@ -1,5 +1,9 @@
 <h2>Offer A Trade</h2>
-<button (click)="submitTradeOffer()" class="btn btn-secondary">Submit Trade Offer</button>
+
+<div id="submit-trade-button">
+<button (click)="submitTradeOffer()" class="btn btn-success btn-secondary">Submit Trade Offer</button>
+<div>
+
 <div id="otherUsersCardDiv">
     <button (click)="viewLoggedCollection()" class="btn btn-secondary">View Your Collection</button>
     <h2>{{otherUser.username}}'s Collection</h2>
@@ -21,4 +25,6 @@
     </div>
 </div>
 
+<div id="goBackbutton">
 <button (click)="goBack()" class="btn btn-secondary">Go Back</button>
+</div>
