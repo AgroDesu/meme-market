@@ -5,4 +5,5 @@ export class OwnedCard {
     id: number;
     card: Card;
     showcase: number;
+    patronId: number;
 }

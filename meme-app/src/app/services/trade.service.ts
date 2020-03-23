@@ -9,6 +9,7 @@ import { OwnedCard } from '../owned-card';
 import { TradeStatus } from '../trade-status';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FullTrade } from '../full-trade';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class TradeService {
   public loggedUser: User;
   public otherUser: User;
   public trade: Trade = new Trade();
-  public selectedTrade: Trade;
+  public selectedFullTrade: FullTrade;
 
 
   constructor(
@@ -84,8 +85,8 @@ export class TradeService {
     return this.otherUser;
   }
 
-  viewTrade(t: Trade){
-    this.selectedTrade = t;
+  viewTrade(ft: FullTrade){
+    this.selectedFullTrade = ft;
     this.router.navigate(['/view-trade']);
   }
   
