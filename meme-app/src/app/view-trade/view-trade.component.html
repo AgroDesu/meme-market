@@ -1,1 +1,24 @@
-<p>view-trade works!</p>
+<h2>Trade with {{otherUser.username}}</h2>
+<ng-container *ngIf="tradeToMe()">
+    <button (click)="acceptTrade()" class="btn btn-success">Accept Trade</button>
+    <button (click)="rejectTrade()" class="btn btn-danger">Reject Trade</button>
+</ng-container>
+<table>
+    <tr>
+        <td>Cards You are Receiving</td>
+        <td>Cards You are giving</td>
+    </tr>
+    <tr>
+        <td>
+            <ng-container *ngfor="let luc of loggedUsersCards">
+                <img src="{{luc.card.image}}" class="memeImage {{luc.card.rarity.name}}" routerLink="/card-details/{{luc.card.id}}">
+            </ng-container>
+        </td>
+        <td>
+            <ng-container *ngfor="let ouc of otherUsersCards">
+                <img src="{{ouc.card.image}}" class="memeImage {{ouc.card.rarity.name}}" routerLink="/card-details/{{ouc.card.id}}">
+            </ng-container>
+        </td>
+    </tr>
+</table>
+<button (click)="goBack()" class="btn btn-secondary">Go Back</button>
