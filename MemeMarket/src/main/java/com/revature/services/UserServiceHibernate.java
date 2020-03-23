@@ -50,6 +50,10 @@ public class UserServiceHibernate implements UserService{
 		return ud.getUser(username);
 	}
 	@Override
+	public User getUserByPatron(Integer id) {
+		return ud.getUserByPatron(id);
+	}
+	@Override
 	public User getUser(User u) {
 		return ud.getUser(u);
 	}

@@ -31,6 +31,12 @@ public class UserController {
 		return ResponseEntity.ok(u);
 	}
 	
+	@GetMapping(path="/userpatron/{id}")
+	private ResponseEntity<User> getUserByPatron(@PathVariable Integer id) {
+		User u = us.getUserByPatron(id);
+		return ResponseEntity.ok(u);
+	}
+	
 	@PostMapping(path="/user")
 	private ResponseEntity<Integer> addUser(@RequestBody User u) {
 		Patron p = new Patron();

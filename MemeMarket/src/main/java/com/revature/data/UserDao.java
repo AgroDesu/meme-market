@@ -11,6 +11,8 @@ public interface UserDao {
 	
 	public User getUser(String username);
 	
+	public User getUserByPatron(Integer id);
+	
 	public List<User> getAll();
 	
 	public User getUser(User u);
