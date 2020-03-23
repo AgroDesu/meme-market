@@ -27,6 +27,7 @@ import { AdminCardComponent } from './admin-card/admin-card.component';
 import { OtherUsersCollectionComponent } from './other-users-collection/other-users-collection.component';
 import { TradeSelectCardsComponent } from './trade-select-cards/trade-select-cards.component';
 import { TradesComponent } from './trades/trades.component';
+import { ViewTradeComponent } from './view-trade/view-trade.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TradesComponent } from './trades/trades.component';
     AdminCardComponent,
     OtherUsersCollectionComponent,
     TradeSelectCardsComponent,
-    TradesComponent
+    TradesComponent,
+    ViewTradeComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { OwnedCard } from '../owned-card';
 import { TradeStatus } from '../trade-status';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,13 @@ export class TradeService {
   public loggedUser: User;
   public otherUser: User;
   public trade: Trade = new Trade();
+  public selectedTrade: Trade;
 
 
   constructor(
     private urlService: UrlService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   addTrade(t: Trade): Observable<Trade> {
@@ -70,6 +73,11 @@ export class TradeService {
 
   getOtherUser(): User {
     return this.otherUser;
+  }
+
+  viewTrade(t: Trade){
+    this.selectedTrade = t;
+    this.router.navigate(['/view-trade']);
   }
   
 }

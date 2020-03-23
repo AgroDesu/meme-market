@@ -16,6 +16,7 @@ import { OtherUsersCollectionComponent } from './other-users-collection/other-us
 import { TradeSelectCardsComponent } from './trade-select-cards/trade-select-cards.component';
 import { BuyStonksComponent } from './buy-stonks/buy-stonks.component';
 import { TradesComponent } from './trades/trades.component';
+import { ViewTradeComponent } from './view-trade/view-trade.component';
 
 
 const routes: Routes = [
@@ -85,6 +86,10 @@ const routes: Routes = [
   {
     path: 'trades',
     component: TradesComponent
+  },
+  {
+    path: 'view-trade',
+    component: ViewTradeComponent
   }
 ];
 
