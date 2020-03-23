@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { OwnedCard } from '../owned-card';
 import { TradeStatus } from '../trade-status';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +49,18 @@ export class TradeService {
     this.trade.tradeStatus = tradeStatus;
     this.addTrade(this.trade).subscribe(
       resp => {
-        alert('Your offer has been submitted.');
+        Swal.fire({
+          icon: 'success',
+          text: 'Trade offer submitted!',
+          showConfirmButton: false,
+          timer: 2000
+        })
       },
       error => {
-        alert('Your offer was unable to be submitted.');
+        Swal.fire({
+          icon: 'error',
+          text: 'Trade offer unable to be processed. Please try again',
+        })
       }
     );
   }
