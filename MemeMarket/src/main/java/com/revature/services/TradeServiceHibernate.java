@@ -37,5 +37,10 @@ public class TradeServiceHibernate implements TradeService {
 	public Set<Trade> getTrades(Integer id) {
 		return td.getTradesByPatron(id);
 	}
+	
+	@Override
+	public void acceptTrade(Trade tr) {
+		td.acceptTrade(tr);
+	}
 
 }

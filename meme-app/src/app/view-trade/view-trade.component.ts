@@ -6,7 +6,7 @@ import { TradeService } from '../services/trade.service';
 import { User } from '../user';
 import { FullTrade } from '../full-trade';
 import { OwnedCard } from '../owned-card';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-trade',
@@ -23,7 +23,8 @@ export class ViewTradeComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     public us: UserService,
-    public ts: TradeService
+    public ts: TradeService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +53,15 @@ export class ViewTradeComponent implements OnInit {
   }
 
   acceptTrade(){
-    
+    this.ts.acceptTrade(this.fullTrade.trade).subscribe(
+      resp => {
+        alert('Trade accepted!');
+        this.router.navigate(['/trades']);
+      },
+      error => {
+        alert('Trade failed...');
+      }
+    )
   }
 
 }

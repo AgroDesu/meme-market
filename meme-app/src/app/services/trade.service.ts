@@ -40,6 +40,15 @@ export class TradeService {
     );
   }
 
+  acceptTrade(t: Trade): Observable<Trade> {
+    const body = JSON.stringify(t);
+    return this.http.post(this.appUrl + '/accept/', body, 
+    {headers: this.headers, withCredentials: true})
+    .pipe( 
+      map(resp => resp as Trade)
+    );
+  }
+
   submitTrade(tc: OwnedCard[]){
     let tradeStatus: TradeStatus = new TradeStatus();
     tradeStatus.id = 1;

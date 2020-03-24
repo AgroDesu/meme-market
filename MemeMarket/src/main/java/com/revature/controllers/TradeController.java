@@ -23,8 +23,14 @@ public class TradeController {
 	private TradeService ts;
 	
 	@PostMapping(path="/trade")
-	private ResponseEntity<Trade> addCard(@RequestBody Trade t) {
+	private ResponseEntity<Trade> addTrade(@RequestBody Trade t) {
 		ts.addTrade(t);
+		return ResponseEntity.ok(t);
+	}
+	
+	@PostMapping(path="/trade/accept")
+	private ResponseEntity<Trade> acceptTrade(@RequestBody Trade t) {
+		ts.acceptTrade(t);
 		return ResponseEntity.ok(t);
 	}
 	

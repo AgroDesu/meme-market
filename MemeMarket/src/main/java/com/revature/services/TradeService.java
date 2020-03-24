@@ -10,4 +10,5 @@ public interface TradeService {
 	public boolean updateTrade(Trade tr);
 	public boolean deleteTrade(Trade tr);
 	public Set<Trade> getTrades(Integer id);
+	public void acceptTrade(Trade tr);
 }
