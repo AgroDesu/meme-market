@@ -39,6 +39,15 @@ public class TradeController {
 		return ResponseEntity.ok(t);
 	}
 	
+	@PostMapping(path="/trade/reject")
+	private ResponseEntity<Trade> rejectTrade(@RequestBody Trade t, HttpSession session) {
+		if (ts.rejectTrade(t)) {
+			return ResponseEntity.ok(t);
+		} else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
 	@GetMapping(path="/trade")
 	private ResponseEntity<Set<Trade>> getTrades(HttpSession session) {
 		User u = (User) session.getAttribute("loggedUser");

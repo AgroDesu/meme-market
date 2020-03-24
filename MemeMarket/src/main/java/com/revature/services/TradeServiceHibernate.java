@@ -42,5 +42,10 @@ public class TradeServiceHibernate implements TradeService {
 	public void acceptTrade(Trade tr) {
 		td.acceptTrade(tr);
 	}
+	
+	@Override
+	public boolean rejectTrade(Trade tr) {
+		return td.rejectTrade(tr);
+	}
 
 }

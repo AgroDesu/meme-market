@@ -36,4 +36,10 @@ export class PickCardPackComponent implements OnInit {
     document.getElementById('pack-btns').style.display = 'none';
     document.getElementById('pack-view').style.display = 'block';
   }
+
+  buyAnother(): void {
+    this.cardsInPack = [];
+    document.getElementById('pack-btns').style.display = 'block';
+    document.getElementById('pack-view').style.display = 'none';
+  }
 }

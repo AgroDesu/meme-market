@@ -12,9 +12,13 @@
 
     <div id="pack-view" style="display: none;">
         <h2>What You Got</h2>
-        <div *ngFor="let c of cardsInPack">
-            <img src="{{c.image}}" class="memeImage {{c.rarity.name}}">
+        <div *ngIf="!cardsInPack"><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt="Loading..."></div>
+        <div id="collection">
+            <div *ngFor="let c of cardsInPack">
+                <img src="{{c.image}}" class="memeImage {{c.rarity.name}}">
+            </div>
         </div>
+        <button class="btn btn-secondary my-2" (click)="buyAnother()">Buy Another Pack</button>
     </div>
 </ng-container>
 

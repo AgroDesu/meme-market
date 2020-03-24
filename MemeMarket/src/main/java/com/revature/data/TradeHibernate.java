@@ -136,6 +136,12 @@ public class TradeHibernate implements TradeDao{
 		// updateTrade(t);
 	}
 	
+	@Override
+	public boolean rejectTrade(Trade t) {
+		t.setTradeStatus(tsd.getTradeStatus(2));
+		return updateTrade(t);
+	}
+	
 }
 
 

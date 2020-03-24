@@ -49,7 +49,15 @@ export class ViewTradeComponent implements OnInit {
   }
 
   rejectTrade(){
-
+    this.ts.rejectTrade(this.fullTrade.trade).subscribe(
+      resp => {
+        alert('Trade rejected!');
+        this.router.navigate(['/trades']);
+      },
+      error => {
+        alert('Trade rejection failed...');
+      }
+    )
   }
 
   acceptTrade(){

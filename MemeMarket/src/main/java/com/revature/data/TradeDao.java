@@ -12,4 +12,5 @@ public interface TradeDao {
 	public boolean deleteTrade(Trade tr);
 	public Set<Trade> getTradesByPatron(Integer id);
 	public void acceptTrade(Trade t);
+	public boolean rejectTrade(Trade t);
 }
