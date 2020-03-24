@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class AddcardComponent implements OnInit {
   public card: Card;
-  public tags: String;
+  public tags: String = "";
   public rarities: Rarity[];
 
   constructor(
@@ -45,11 +45,13 @@ export class AddcardComponent implements OnInit {
       // Add all tags to the card
       this.card.tag = [];
       let tagArr = this.tags.split(" ");
-      for (let t of tagArr) {
-        let tag = new Tag();
-        tag.name = t;
-        this.card.tag.push(tag);
-      }
+      if (tagArr[0]) {
+        for (let t of tagArr) {
+          let tag = new Tag();
+          tag.name = t;
+          this.card.tag.push(tag);
+        }
+      } 
       // Send card to backend to be added
       this.cardService.addCard(this.card).subscribe(
         resp => {

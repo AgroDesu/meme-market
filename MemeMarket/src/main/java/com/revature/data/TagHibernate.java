@@ -50,9 +50,9 @@ public class TagHibernate implements TagDao{
 		String query = "from Tag where name=:name";
 		Query<Tag> q = s.createQuery(query, Tag.class);
 		q.setParameter("name", name);
-		List<Tag> tagList = q.getResultList();
+		Tag tagList = q.uniqueResult();
 		s.close();
-		return tagList.get(0);
+		return tagList;
 	};
 	
 	@Override
