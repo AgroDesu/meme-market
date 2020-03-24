@@ -25,6 +25,8 @@ public class TradeHibernate implements TradeDao{
 	private UserDao ud;
 	@Autowired
 	private TradeStatusDao tsd;
+	@Autowired
+	private OwnedCardDao ocd;
 	
 	@Override
 	public int addTrade(Trade tr) {
@@ -108,16 +110,17 @@ public class TradeHibernate implements TradeDao{
 	@Override
 	public void acceptTrade(Trade t) {
 		Session s = hu.getSession();
-		Set<OwnedCard> tradedCards = t.getCardsToBeTraded();
+//		Set<OwnedCard> tradedCards = t.getCardsToBeTraded();
 		t.setTradeStatus(tsd.getTradeStatus(3));
 		updateTrade(t);
 		System.out.println("Updated status: " + t);
-		for(OwnedCard oc : tradedCards) {
+		for(OwnedCard oc : t.getCardsToBeTraded()) {
 			if(oc.getPatronId() == t.getPatronOne().getId()) {
 				oc.setPatronId(t.getPatronTwo().getId());
 			} else {
 				oc.setPatronId(t.getPatronOne().getId());
 			}
+			ocd.updateOwnedCard(oc);
 			
 			String sql = "SELECT tradeId FROM tradeCardView WHERE ownedCardsId=? AND tradeStatusId=?";
 			List<BigDecimal> tradeIds = s.createNativeQuery(sql).setParameter(1, oc.getId()).setParameter(2, 1).list();
@@ -127,10 +130,10 @@ public class TradeHibernate implements TradeDao{
 				updateTrade(tr);
 			}
 		}
-		System.out.println("Updated tradedCards: " + tradedCards);
-		t.setCardsToBeTraded(tradedCards);
-		System.out.println("Final update: " + t);
-		updateTrade(t);
+//		System.out.println("Updated tradedCards: " + tradedCards);
+//		t.setCardsToBeTraded(tradedCards);
+		// System.out.println("Final update: " + t);
+		// updateTrade(t);
 	}
 	
 }

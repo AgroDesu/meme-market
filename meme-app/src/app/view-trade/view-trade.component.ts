@@ -56,6 +56,7 @@ export class ViewTradeComponent implements OnInit {
     this.ts.acceptTrade(this.fullTrade.trade).subscribe(
       resp => {
         alert('Trade accepted!');
+        this.us.getLoggedUser();
         this.router.navigate(['/trades']);
       },
       error => {

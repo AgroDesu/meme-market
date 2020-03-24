@@ -48,7 +48,7 @@ public class OwnedCardHibernate implements OwnedCardDao {
 		boolean b = false;
 		try{
 			t = s.beginTransaction();
-			s.update(oc.getId());
+			s.update(oc);
 			t.commit();
 			b = true;
 		} catch(Exception e) {
