@@ -19,11 +19,13 @@
         <td>
             <ng-container *ngFor="let ouc of otherUsersCards">
                 <img src="{{ouc.card.image}}" class="memeImage {{ouc.card.rarity.name}}" routerLink="/card-details/{{ouc.card.id}}">
+                <br>
             </ng-container>
         </td>
         <td>
             <ng-container *ngFor="let luc of loggedUsersCards">
                 <img src="{{luc.card.image}}" class="memeImage {{luc.card.rarity.name}}" routerLink="/card-details/{{luc.card.id}}">
+                <br>
             </ng-container>
         </td>
     </tr>
