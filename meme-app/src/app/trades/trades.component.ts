@@ -11,9 +11,14 @@ import { FullTrade } from '../full-trade';
   styleUrls: ['./trades.component.css']
 })
 export class TradesComponent implements OnInit {
+  public user: User;
   public trades: Trade[];
   public fullTrades: FullTrade[];
+  public onMeFullTrades: FullTrade[] = new Array();
+  public notOnMeFullTrades: FullTrade[] = new Array();
+  public notPendingFullTrades: FullTrade[] = new Array();
   public usernames: String[];
+  public showPastTrades: boolean
 
   constructor(
     public tradeService: TradeService,
@@ -22,6 +27,7 @@ export class TradesComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.showPastTrades = false;
     this.tradeService.getTrades().subscribe(
       resp => {
         this.trades = resp;
@@ -39,12 +45,30 @@ export class TradesComponent implements OnInit {
           this.userService.getUserByPatronId(patronID).subscribe(resp => {
             ft.otherUser = resp; 
             this.fullTrades.push(ft);
+            if(ft.trade.tradeStatus.id === 1){
+              if(user.patron.id === ft.trade.patronTwo.id){
+                this.onMeFullTrades.push(ft);
+              }else{
+                this.notOnMeFullTrades.push(ft);
+              }
+            }else{
+              this.notPendingFullTrades.push(ft);
+            }
           });
-          
         }
-        console.log(this.trades);
       }
     )
   }
+
+  togglePastTrades(){
+    if(!this.showPastTrades){
+      this.showPastTrades = true;
+    }else{
+      this.showPastTrades = false;
+    }
+  }
+
+
+
 
 }
