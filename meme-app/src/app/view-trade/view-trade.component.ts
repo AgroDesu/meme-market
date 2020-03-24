@@ -41,7 +41,7 @@ export class ViewTradeComponent implements OnInit {
   }
 
   tradeToMe(): boolean {
-    return this.loggedUser.patron.id === this.fullTrade.trade.patronTwo.id;
+    return this.loggedUser.patron.id === this.fullTrade.trade.patronTwo.id && this.fullTrade.trade.tradeStatus.id === 1;
   }
 
   goBack(): void {

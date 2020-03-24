@@ -5,10 +5,16 @@
 </ng-container>
 <p>Status: {{fullTrade.trade.tradeStatus.statusName}}</p>
 <table>
-    <tr>
+    <tr *ngIf="fullTrade.trade.tradeStatus.id !== 3; else flipLabels" >
         <td>Cards You are Receiving</td>
         <td>Cards You are Giving</td>
     </tr>
+    <ng-template #flipLabels>
+        <tr>
+            <td>Cards You Gave</td>
+            <td>Cards You Recieved</td>
+        </tr>
+    </ng-template>
     <tr>
         <td>
             <ng-container *ngFor="let ouc of otherUsersCards">
