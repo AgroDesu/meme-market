@@ -310,7 +310,18 @@ insert into OwnedCards (id, patronId, cardId, showcased) values (3, 2, 3, null);
 --    cardId number(10) not null,
 --    showcased number(1),
 
+create view tradeCardView as SELECT tradeid, ownedcardsid, tradestatusid FROM TradeOwnedCards toc, Trades t, OwnedCards oc  WHERE toc.tradeid = t.id AND toc.ownedcardsid=oc.id;
+
 commit;
+
+select from trades join tradeownedcards where 
+
+
+
+
+
+
+
 /*
 create table Patrons
 create table Rarity

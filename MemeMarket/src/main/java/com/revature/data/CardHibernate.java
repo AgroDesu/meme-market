@@ -1,6 +1,7 @@
 
 package com.revature.data;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -55,8 +56,13 @@ public class CardHibernate implements CardDao{
 		Query<Card> q = s.createQuery(query, Card.class);
 		q.setParameter("rarity", r.getId());
 		List<Card> cardList = q.getResultList();
-		Collections.sort(cardList);
-		return cardList;		
+		List<Card> notDeletedCards = new ArrayList<>();
+		for(Card c : cardList) {
+			if(!"Deleted Card".equals(c.getCardText())) {
+				notDeletedCards.add(c);
+			}
+		}
+		return notDeletedCards;		
 	}
 	
 	public boolean updateCard(Card c) {
@@ -105,7 +111,13 @@ public class CardHibernate implements CardDao{
 		String query = "FROM Card";
 		Query<Card> q = s.createQuery(query, Card.class);
 		List<Card> cardList = q.getResultList();
-		Set<Card> cardSet = new HashSet<Card>(cardList);
+		List<Card> notDeletedCards = new ArrayList<>();
+		for(Card c : cardList) {
+			if(!"Deleted Card".equals(c.getCardText())) {
+				notDeletedCards.add(c);
+			}
+		}
+		Set<Card> cardSet = new HashSet<Card>(notDeletedCards);
 		s.close();
 		return cardSet;	
 	};
