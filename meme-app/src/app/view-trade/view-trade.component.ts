@@ -7,6 +7,7 @@ import { User } from '../user';
 import { FullTrade } from '../full-trade';
 import { OwnedCard } from '../owned-card';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-trade',
@@ -55,12 +56,20 @@ export class ViewTradeComponent implements OnInit {
   acceptTrade(){
     this.ts.acceptTrade(this.fullTrade.trade).subscribe(
       resp => {
-        alert('Trade accepted!');
+        Swal.fire({
+          icon: 'success',
+          text: 'Trade Accepted!',
+          showConfirmButton: false,
+          timer: 1900
+        })
         this.us.getLoggedUser();
         this.router.navigate(['/trades']);
       },
       error => {
-        alert('Trade failed...');
+        Swal.fire({
+          icon: 'error',
+          text: 'Trade Failed. Please try again.',
+        })
       }
     )
   }
