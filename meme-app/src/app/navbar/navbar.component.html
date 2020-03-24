@@ -14,8 +14,8 @@
         <ng-template #authenticated>
             <!-- User is logged in; welcome them and show Logout button -->
             <!-- <p *ngFor="let user of u"> Welcome, {{user.username}} </p> -->
-            <div *ngIf="userService.getUser()" class="nav-link">Welcome {{(isAdmin())?'Admin ':' '}}{{userService.getUser().username}}</div>
-            <div *ngIf="userService.isPatron()" class="nav-link">Stonks: {{userService.getUser().patron.stonks}}</div>
+            <div *ngIf="userService.getUser()" id = "welcome-text" class="nav-link">Welcome, {{(isAdmin())?'Admin ':' '}}{{userService.getUser().username}}</div>
+            <div *ngIf="userService.isPatron()" id = "stonk-text" class="nav-link">Stonks: {{userService.getUser().patron.stonks}}</div>
             <button id="logout-btn" (click)="logOut()" class="btn btn-danger ml-2 my-2 my-sm-0">Logout</button>
         </ng-template>
     </div>
