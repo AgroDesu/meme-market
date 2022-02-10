@@ -88,7 +88,7 @@
 		<dependency>
 			<artifactId>hibernate-core</artifactId>
 			<groupId>org.hibernate</groupId>
-			<version>5.2.12.Final</version>
+			<version>5.4.24.Final</version>
 		</dependency>
 	</dependencies>
   
